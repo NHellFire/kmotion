@@ -341,7 +341,7 @@ KM.load_settings = function (callback) {
 		    }
 		}
 	    }; 
-	    xmlHttp.open('GET', '/cgi_bin/xmlHttp_settings_rd.py' + '?rnd=' + new Date().getTime(), true);
+	    xmlHttp.open('GET', 'cgi_bin/xmlHttp_settings_rd.py' + '?rnd=' + new Date().getTime(), true);
 	    xmlHttp.send(null);
 	}
 	
@@ -1101,7 +1101,7 @@ KM.camera_func_button_clicked = function (button) {
                 }
             }
         } else {
-            KM.exe_script('/cgi_bin/xmlHttp_func.py', button);
+            KM.exe_script('cgi_bin/xmlHttp_func.py', button);
         }
     }
 };
@@ -1121,7 +1121,7 @@ KM.ptz_button_clicked = function (button) {
     if (KM.menu_bar_buttons.ptz_sec_enabled) {
         KM.ptz_button_lockdown(button);
         // coded format crf<feed 2 digit>b<button 2 digit>$
-        KM.exe_script('/cgi_bin/xmlHttp_ptz.py', 'crf' + KM.pad_out2(KM.live.ptz_feed) + 'b' + KM.pad_out2(button) + '$');
+        KM.exe_script('cgi_bin/xmlHttp_ptz.py', 'crf' + KM.pad_out2(KM.live.ptz_feed) + 'b' + KM.pad_out2(button) + '$');
     }
 };
 
@@ -1353,7 +1353,7 @@ KM.update_feeds = function () {
 	    }
 	}
     };
-    xmlHttp.open('GET', '/cgi_bin/xmlHttp_feeds.py' + '?rnd=' + new Date().getTime(), true);
+    xmlHttp.open('GET', 'cgi_bin/xmlHttp_feeds.py' + '?rnd=' + new Date().getTime(), true);
     xmlHttp.send(null);
 };
 
@@ -3954,7 +3954,7 @@ KM.display_archive_ = function () {
 		    }
 		    
 		    return {valid: true, frame: next_frame, secs: next_sec, index: smovie_index, 
-		    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(next_sec) + '/' + KM.pad_out2(next_frame) + '.jpg'};
+		    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(next_sec) + '/' + KM.pad_out2(next_frame) + '.jpg'};
 		}
 	    }
 	    
@@ -3968,12 +3968,12 @@ KM.display_archive_ = function () {
 		    }
 	    
 		    return {valid: true, frame: smovie_fps[i] - smovie_sitems[i], secs: display_secs, index: i, 
-		    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(display_secs) + '/' + KM.pad_out2(tmp_frame) + '.jpg'};
+		    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(display_secs) + '/' + KM.pad_out2(tmp_frame) + '.jpg'};
 		    
 		} else if (smovie_start[i] > display_secs) {
 		
 		    return {valid: true, frame: (smovie_fps[i] - smovie_sitems[i]), secs: smovie_start[i], index: i, 
-		    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(smovie_start[i]) + '/' + KM.pad_out2(smovie_fps[i] - smovie_sitems[i]) + '.jpg'};  
+		    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(smovie_start[i]) + '/' + KM.pad_out2(smovie_fps[i] - smovie_sitems[i]) + '.jpg'};  
 		}
 	    }
 	    
@@ -4036,7 +4036,7 @@ KM.display_archive_ = function () {
 	
 	if (calc_secs <= 86400) { // < 60 * 60 * 24 secs
 	    return {valid: true, secs: calc_secs, 
-	    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/snap/' + KM.secs_hhmmss(calc_secs) + '.jpg'};
+	    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/snap/' + KM.secs_hhmmss(calc_secs) + '.jpg'};
 	} else {
 	    return {valid: false, secs: 0, fq_image_name: ''};
 	}
@@ -4343,7 +4343,7 @@ KM.display_archive_ = function () {
 		    }
 		    
 		    return {valid: true, frame: prev_frame, secs: prev_sec, index: smovie_index, 
-		    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(prev_sec) + '/' + KM.pad_out2(prev_frame) + '.jpg'};
+		    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(prev_sec) + '/' + KM.pad_out2(prev_frame) + '.jpg'};
 		}
 	    }
 	    
@@ -4357,12 +4357,12 @@ KM.display_archive_ = function () {
 		    }
 		
 		    return {valid: true, frame: tmp_frame, secs: display_secs, index: i, 
-		    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(display_secs) + '/' + KM.pad_out2(tmp_frame) + '.jpg'};
+		    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(display_secs) + '/' + KM.pad_out2(tmp_frame) + '.jpg'};
 	       
 		} else if (smovie_end[i] < display_secs) {
 		
 		    return {valid: true, frame: (smovie_eitems[i] - 1), secs: smovie_end[i], index: i, 
-		    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(smovie_end[i]) + '/' + (KM.pad_out2(smovie_eitems[i] - 1)) + '.jpg'};
+		    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/smovie/' + KM.secs_hhmmss(smovie_end[i]) + '/' + (KM.pad_out2(smovie_eitems[i] - 1)) + '.jpg'};
 	       
 		}
 	    }
@@ -4413,7 +4413,7 @@ KM.display_archive_ = function () {
 	}
 	if (calc_secs <= 86400) { // < 60 * 60 * 24 secs
 	    return {valid: true, secs: calc_secs, 
-	    fq_image_name: '/images_dbase/' + date + '/' + KM.pad_out2(cam) + '/snap/' + KM.secs_hhmmss(calc_secs) + '.jpg'};
+	    fq_image_name: 'images_dbase/' + date + '/' + KM.pad_out2(cam) + '/snap/' + KM.secs_hhmmss(calc_secs) + '.jpg'};
 	} else {
 	    return {valid: false, secs: 0, fq_image_name: ''};
 	}
@@ -4610,7 +4610,7 @@ KM.display_archive_ = function () {
 	//
 	// return:
     
-	fq_image_name = '/images/ncam.png';
+	fq_image_name = 'images/ncam.png';
 	var html = '<img src=' + fq_image_name + ' id="image" style="width:100%;height:99%" alt="" />';
 	document.getElementById('display_html').innerHTML = html;
     }
@@ -4683,7 +4683,7 @@ KM.display_archive_ = function () {
 		    }
 		}
 	    };
-	    xmlHttp.open('GET', '/cgi_bin/xmlHttp_arch.py?date=00000000&cam=0&func=avail&rnd=' + new Date().getTime(), true);
+	    xmlHttp.open('GET', 'cgi_bin/xmlHttp_arch.py?date=00000000&cam=0&func=avail&rnd=' + new Date().getTime(), true);
 	    xmlHttp.send(null);
 	}
 	
@@ -4780,7 +4780,7 @@ KM.display_archive_ = function () {
 		    }
 		}
 	    };
-	    xmlHttp.open('GET', '/cgi_bin/xmlHttp_arch.py?date=' + date + '&cam=' + camera + '&func=index' + '&rnd=' + new Date().getTime(), true);
+	    xmlHttp.open('GET', 'cgi_bin/xmlHttp_arch.py?date=' + date + '&cam=' + camera + '&func=index' + '&rnd=' + new Date().getTime(), true);
 	    xmlHttp.send(null);
 	}
 	
@@ -4961,7 +4961,7 @@ KM.display_logs = function () {
                 }
             }
         };
-        xmlHttp.open('GET', '/cgi_bin/xmlHttp_logs.py' + '?rnd=' + new Date().getTime(), true);
+        xmlHttp.open('GET', 'cgi_bin/xmlHttp_logs.py' + '?rnd=' + new Date().getTime(), true);
         xmlHttp.send(null);
     }
     
@@ -5224,7 +5224,7 @@ KM.conf_config_track = function() {
 	    coded_str += '$chk:' + zero_pad + coded_len;
 	    if (coded_len !== 0) { // ie empty string 
 		var xmlHttp = KM.get_xmlHttp_obj();
-		xmlHttp.open('POST', '/cgi_bin/xmlHttp_settings_wr.py'); 
+		xmlHttp.open('POST', 'cgi_bin/xmlHttp_settings_wr.py'); 
 		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlHttp.setRequestHeader("Content-length", coded_str.length);
 		xmlHttp.setRequestHeader("Connection", "close");  
@@ -5287,7 +5287,7 @@ KM.conf_error_daemon = function (session_id) {
 		}
 	    }
 	};
-	xmlHttp.open('GET', '/cgi_bin/xmlHttp_out.py' + '?rnd=' + new Date().getTime(), true);
+	xmlHttp.open('GET', 'cgi_bin/xmlHttp_out.py' + '?rnd=' + new Date().getTime(), true);
 	xmlHttp.send(null);
     }
 
@@ -6645,7 +6645,7 @@ KM.conf_ptz_servo = function (button) {
     // return:
     //
     
-    KM.exe_script('/cgi_bin/xmlHttp_ptz.py', 'crf' + KM.pad_out2(KM.config.camera) + 'b' + KM.pad_out2(button) + '$')
+    KM.exe_script('cgi_bin/xmlHttp_ptz.py', 'crf' + KM.pad_out2(KM.config.camera) + 'b' + KM.pad_out2(button) + '$')
     KM.conf_ptz_grey_LUDR();
     // all ptz cameras are set to 0:0 at the start, track the movements to
     // calculate abs position (in theory)
@@ -6667,7 +6667,7 @@ KM.conf_ptz_calibrate = function () {
     
     KM.conf_ptz_grey_LUDR();
     // reset camera to 0:0 by sending coded string 'caf<feed 2 digit>x<4 digits + 5000>y<4 digits + 5000>$' 
-    KM.exe_script('/cgi_bin/xmlHttp_ptz.py', 'caf' + KM.pad_out2(KM.config.camera) + 'x5000y5000$');
+    KM.exe_script('cgi_bin/xmlHttp_ptz.py', 'caf' + KM.pad_out2(KM.config.camera) + 'x5000y5000$');
     KM.config.ptz_current_x = 0;
     KM.config.ptz_current_y = 0;
 };
@@ -6701,7 +6701,7 @@ KM.conf_ptz_test_park = function () {
     KM.config.ptz_current_x = KM.www_rc.ptz_park_x[KM.config.camera];
     KM.config.ptz_current_y = KM.www_rc.ptz_park_y[KM.config.camera];
     // test park position with string 'caf<feed 2 digit>x<4 digits>y<4 digits>$'
-    KM.exe_script('/cgi_bin/xmlHttp_ptz.py', 'caf' + KM.pad_out2(KM.config.camera) + 'x' + 
+    KM.exe_script('cgi_bin/xmlHttp_ptz.py', 'caf' + KM.pad_out2(KM.config.camera) + 'x' + 
     KM.pad_out4(KM.www_rc.ptz_park_x[KM.config.camera] + 5000) + 'y' + 
     KM.pad_out4(KM.www_rc.ptz_park_y[KM.config.camera] + 5000) + '$');
 };
@@ -6736,7 +6736,7 @@ KM.conf_ptz_test_preset = function (preset) {
     KM.config.ptz_current_x = KM.www_rc['ptz_preset' + preset + '_x'][KM.config.camera];
     KM.config.ptz_current_y = KM.www_rc['ptz_preset' + preset + '_y'][KM.config.camera];
     // test preset position with string 'caf<feed 2 digit>x<4 digits>y<4 digits>$' 
-    KM.exe_script('/cgi_bin/xmlHttp_ptz.py', 'caf' + KM.pad_out2(KM.config.camera) + 'x' + 
+    KM.exe_script('cgi_bin/xmlHttp_ptz.py', 'caf' + KM.pad_out2(KM.config.camera) + 'x' + 
     KM.pad_out4(KM.www_rc['ptz_preset' + preset + '_x'][KM.config.camera] + 5000) + 'y' + 
     KM.pad_out4(KM.www_rc['ptz_preset' + preset + '_y'][KM.config.camera] + 5000) + '$');
 };
@@ -7180,7 +7180,7 @@ KM.conf_load_html = function() {
                     }
                 }
             };
-            xmlHttp.open('GET', '/cgi_bin/xmlHttp_load.py' + '?rnd=' + new Date().getTime(), true);
+            xmlHttp.open('GET', 'cgi_bin/xmlHttp_load.py' + '?rnd=' + new Date().getTime(), true);
             xmlHttp.send(null);
         }
     

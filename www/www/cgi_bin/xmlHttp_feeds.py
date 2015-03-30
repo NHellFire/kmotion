@@ -85,6 +85,8 @@ def index(req):
             
             index_ = max(index_, 0) # limit in case tmp = ''
             tmp_stripped = tmp[index_:]
+            if tmp_stripped[0] == '/':
+                tmp_stripped = tmp_stripped[1:]
             
             # screen for no image if feed enabled but no camera
             if tmp_stripped == '.':
