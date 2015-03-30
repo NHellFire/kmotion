@@ -106,6 +106,10 @@ def check_lock(kmotion_dir, mutex):
     files.sort()
     if len(files) > 0 and files[0] == '.svn': # strip the .svn dir
         files.pop(0)
-    return len(files)
-        
-        
+    ret = []
+    for file in files:
+        if os.path.isdir("/proc/" + os.path.basename(file)):
+            ret.append(file)
+        else:
+            os.remove(file)
+    return len(ret)
