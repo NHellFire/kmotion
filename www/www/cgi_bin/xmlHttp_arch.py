@@ -97,7 +97,7 @@ def date_feed_avail_data(images_dbase_dir):
     """
     
     coded_str = ''
-    dates = [i for i in os.listdir(images_dbase_dir) if len(i) == 8] # filter .svn 
+    dates = [i for i in os.listdir(images_dbase_dir) if len(i) == 8 and os.path.isdir(images_dbase_dir+'/'+i)] # filter .svn and files
     dates.sort()
     
     for date in dates:
